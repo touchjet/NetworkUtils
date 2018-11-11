@@ -16,13 +16,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 */
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Serilog;
 
 namespace Touchjet.NetworkUtils
 {
-    public class BaseServiceClient
+    public class BaseServiceClient : IDisposable
     {
         readonly HttpClient _client;
         readonly ApiAuthorizer _authorizer;
@@ -34,6 +35,11 @@ namespace Touchjet.NetworkUtils
             _baseUrl = baseUrl;
             _client = new HttpClient();
             _authorizer = authorizer;
+        }
+
+        public void Dispose()
+        {
+            _client.Dispose();
         }
 
         protected async Task<T> Get<T>(string path)

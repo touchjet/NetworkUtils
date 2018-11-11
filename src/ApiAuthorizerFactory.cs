@@ -23,9 +23,9 @@ namespace Touchjet.NetworkUtils
     public static class ApiAuthorizerFactory
     {
         static Dictionary<string, ApiAuthorizer> _authorizers;
-        static object accessLock = new object();
+        static readonly object accessLock = new object();
 
-        public static ApiAuthorizer GetAuthorizer(string apiUrl, string authUrl, string api, string secret)
+        public static ApiAuthorizer GetAuthorizer(string apiUrl, string authenticationUrl, string api, string secret)
         {
             lock (accessLock)
             {
@@ -39,7 +39,7 @@ namespace Touchjet.NetworkUtils
                 }
                 else
                 {
-                    var authorizer = new ApiAuthorizer(authUrl, api, secret);
+                    var authorizer = new ApiAuthorizer(authenticationUrl, api, secret);
                     _authorizers.Add(apiUrl, authorizer);
                     return authorizer;
                 }

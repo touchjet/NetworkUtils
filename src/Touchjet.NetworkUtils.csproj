@@ -9,7 +9,8 @@
     <PackageProjectUrl>https://github.com/touchjet/NetworkUtils</PackageProjectUrl>
     <Description>C# helpers and extensions to make network calls easier.</Description>
     <PackageId>Touchjet.NetworkUtils</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
+    <PackageReleaseNotes>Properly dispose HttpClient objects.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
